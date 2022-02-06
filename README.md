@@ -7,7 +7,7 @@
 
 # ⚠ IMPORTANTE ⚠
 Gracias por usar este código! Porfavor, si tienes dudas, errores o preguntas sobre como se usa, unete al Discord de Soporte!
-💛 Apoya el desarollo [**donándonos**](https://paypal.me/deustouh) 
+<br>💛 Apoya el desarollo [**donándonos**](https://paypal.me/deustouh) 
 
 # Guía de Instalación 🔥
 
