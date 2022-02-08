@@ -6,6 +6,7 @@ const client = new Discord.Client({
         Discord.Intents.FLAGS.GUILDS,
         Discord.Intents.FLAGS.GUILD_MEMBERS,
         Discord.Intents.FLAGS.GUILD_MESSAGES,
+        Discord.Intents.FLAGS.GUILD_VOICE_STATES,
     ],
 })
 
@@ -13,7 +14,7 @@ client.commands = new Discord.Collection();
 client.aliases = new Discord.Collection();
 
 function requerirhandlers(){
-    ["command", "events"].forEach(handler => {
+    ["command", "events", "distube"].forEach(handler => {
         try {
             require(`./handlers/${handler}`)(client, Discord)
         } catch(e){
