@@ -55,5 +55,9 @@ module.exports = (client, Discord) => {
             .setFooter({text: `Añadida por ${song.user.tag}`, iconURL: song.user.displayAvatarURL({dynamic: true})})
             ]
         })
-    })
+    });
+
+    client.distube.on("initQueue", (queue) => {
+        queue.autoplay = true;
+    });
 };
