@@ -12,6 +12,11 @@ module.exports = async (client, message) => {
     const cmd = args.shift()?.toLowerCase();
     const command = client.commands.get(cmd) || client.commands.find(c => c.aliases && c.aliases.includes(cmd));
     if(command) {
+
+        if(command.owner){
+            if(!config.ownerIDS.includes(message.author.id)) return message.reply(`❌ **Solo los dueños de este bot pueden ejecutar este comando!**\n**Dueños del bot:** ${config.ownerIDS.map(ownerid => `<@${ownerid}>`)}`)
+        }
+
         //ejecutar el comando
         command.run(client, message, args, data.prefijo)
     } else {
