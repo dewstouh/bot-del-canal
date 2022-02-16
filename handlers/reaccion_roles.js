@@ -11,7 +11,6 @@ module.exports = client => {
             await asegurar_todo(reaction.message.guild.id);
             const setup = await setupSchema.findOne({guildID: reaction.message.guild.id});
             const reaccionroles = setup.reaccion_roles;
-            console.log(setup)
             if(!reaccionroles || !reaccionroles.length || reaccionroles.length === 0 || reaccionroles === undefined || reaccionroles === null) return;
             for(let i = 0; i < reaccionroles.length; i++){
                 if(reaction.message.id === reaccionroles[i].ID_MENSAJE){
@@ -82,7 +81,6 @@ module.exports = client => {
             await asegurar_todo(reaction.message.guild.id);
             const setup = await setupSchema.findOne({guildID: reaction.message.guild.id});
             const reaccionroles = setup.reaccion_roles;
-            console.log(setup)
             if(!reaccionroles || !reaccionroles.length || reaccionroles.length === 0 || reaccionroles === undefined || reaccionroles === null) return;
             for(let i = 0; i < reaccionroles.length; i++){
                 if(reaction.message.id === reaccionroles[i].ID_MENSAJE){
