@@ -1,11 +1,15 @@
 {
-  "name": "Mini-Niby-Oficial",
+  "name": "mini-niby-official",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node ."
+  },
+  "engines": {
+    "node": "16.11.0",
+    "npm": "8.0.0"
   },
   "author": "",
   "license": "ISC",
