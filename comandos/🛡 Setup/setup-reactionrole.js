@@ -4,7 +4,7 @@ const setupSchema = require(`${process.cwd()}/modelos/setups.js`);
 module.exports = {
     name: "setup-reactionrole",
     aliases: ["setup-reactionroles", "setup-reaccionroles", "setup-reaccionrol", "setupreactionroles", "reactionrolessetup"],
-    desc: "Sirve para crear un sistema de autoroles avanzado",
+    desc: "Sirve para ver la latencia del Bot",
     run: async (client, message, args, prefix) => {
         var contador = 0;
         var finalizado = false;

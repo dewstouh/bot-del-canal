@@ -3,8 +3,7 @@ const { SpotifyPlugin } = require('@distube/spotify');
 const { SoundCloudPlugin } = require('@distube/soundcloud');
 module.exports = (client, Discord) => {
     console.log(`Modulo de MÚSICA Cargado!`.red)
-    
-    //Configuramos el Distube
+
     client.distube = new DisTube(client, {
         emitNewSongOnly: false,
         leaveOnEmpty: true,

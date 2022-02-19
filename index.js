@@ -29,4 +29,4 @@ function requerirhandlers(){
 }
 requerirhandlers();
 
-client.login(config.token)
+client.login(config.token).catch(() => console.log(`-[X]- NO HAS ESPECIFICADO UN TOKEN VALIDO -[X]-`.red))
