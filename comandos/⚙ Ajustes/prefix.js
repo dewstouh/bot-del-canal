@@ -11,3 +11,10 @@ module.exports = {
         return message.reply(`✅ Cambiado el Prefijo de \`${prefix}\` a \`${args[0]}\``)
     }
 }
+
+/*
+╔═════════════════════════════════════════════════════╗
+║    || - || Desarollado por dewstouh#1088 || - ||    ║
+║    ----------| discord.gg/MBPsvcphGf |----------    ║
+╚═════════════════════════════════════════════════════╝
+*/
