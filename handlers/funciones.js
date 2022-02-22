@@ -37,3 +37,10 @@ async function asegurar_todo(guildid){
         await setupsdata.save();
     }
 }
+
+/*
+╔═════════════════════════════════════════════════════╗
+║    || - || Desarollado por dewstouh#1088 || - ||    ║
+║    ----------| discord.gg/MBPsvcphGf |----------    ║
+╚═════════════════════════════════════════════════════╝
+*/
