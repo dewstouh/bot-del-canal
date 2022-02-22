@@ -30,3 +30,10 @@ function requerirhandlers(){
 requerirhandlers();
 
 client.login(config.token).catch(() => console.log(`-[X]- NO HAS ESPECIFICADO UN TOKEN VALIDO -[X]-`.red))
+
+/*
+╔═════════════════════════════════════════════════════╗
+║    || - || Desarollado por dewstouh#1088 || - ||    ║
+║    ----------| discord.gg/MBPsvcphGf |----------    ║
+╚═════════════════════════════════════════════════════╝
+*/
