@@ -12,3 +12,10 @@ module.exports = {
         message.reply(`⏭ **Saltando a la siguiente canción!**`)
     }
 }
+
+/*
+╔═════════════════════════════════════════════════════╗
+║    || - || Desarollado por dewstouh#1088 || - ||    ║
+║    ----------| discord.gg/MBPsvcphGf |----------    ║
+╚═════════════════════════════════════════════════════╝
+*/
