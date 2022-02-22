@@ -6,3 +6,10 @@ module.exports = {
         message.reply(`Pong! El ping del Bot es de \`${client.ws.ping}ms\``)
     }
 }
+
+/*
+╔═════════════════════════════════════════════════════╗
+║    || - || Desarollado por dewstouh#1088 || - ||    ║
+║    ----------| discord.gg/MBPsvcphGf |----------    ║
+╚═════════════════════════════════════════════════════╝
+*/
