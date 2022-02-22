@@ -8,3 +8,10 @@ const setupSchema = new mongoose.Schema({
 const model = mongoose.model("Configuraciones", setupSchema);
 
 module.exports = model;
+
+/*
+╔═════════════════════════════════════════════════════╗
+║    || - || Desarollado por dewstouh#1088 || - ||    ║
+║    ----------| discord.gg/MBPsvcphGf |----------    ║
+╚═════════════════════════════════════════════════════╝
+*/
