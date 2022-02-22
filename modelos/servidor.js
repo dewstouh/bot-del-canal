@@ -8,3 +8,10 @@ const serverSchema = new mongoose.Schema({
 const model = mongoose.model("ConfigServer", serverSchema);
 
 module.exports = model;
+
+/*
+╔═════════════════════════════════════════════════════╗
+║    || - || Desarollado por dewstouh#1088 || - ||    ║
+║    ----------| discord.gg/MBPsvcphGf |----------    ║
+╚═════════════════════════════════════════════════════╝
+*/
