@@ -1,12 +1,13 @@
 const mongoose = require('mongoose');
 
-const setupSchema = new mongoose.Schema({
+const tickets = new mongoose.Schema({
     guildID: String,
-    reaccion_roles: Array,
-    sistema_tickets: {type: Object, default: {canal: "", mensaje: ""}}
+    autor: String,
+    canal: String,
+    cerrado: {type: Boolean, default: false}
 })
 
-const model = mongoose.model("Configuraciones", setupSchema);
+const model = mongoose.model("Tickets_Creados", tickets);
 
 module.exports = model;
 
