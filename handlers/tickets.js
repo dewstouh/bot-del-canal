@@ -11,7 +11,7 @@ module.exports = client => {
         try {
 
             //comprobaciones previas
-            if (!interaction.guild || !interaction.channel || !interaction.isButton() || interaction.message.author.id !== client.user.id || interaction.customId !== "crear_ticket");
+            if (!interaction.guild || !interaction.channel || !interaction.isButton() || interaction.message.author.id !== client.user.id || interaction.customId !== "crear_ticket") return;
             //aseguramos la base de datos para evitar errores
             await asegurar_todo(interaction.guild.id);
             //buscamos el setup en la base de datos
@@ -86,7 +86,7 @@ module.exports = client => {
         try {
 
             //comprobaciones previas
-            if (!interaction.guild || !interaction.channel || !interaction.isButton() || interaction.message.author.id !== client.user.id);
+            if (!interaction.guild || !interaction.channel || !interaction.isButton() || interaction.message.author.id !== client.user.id) return;
             //aseguramos la base de datos para evitar errores
             await asegurar_todo(interaction.guild.id);
 
