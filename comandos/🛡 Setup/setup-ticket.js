@@ -5,6 +5,8 @@ module.exports = {
     name: "setup-ticket",
     aliases: ["ticket-setup", "setupticket", "ticketsetup"],
     desc: "Sirve para crear un sistema de Tickets",
+    permisos: ["ADMINISTRATOR"],
+    permisos_bot: ["MANAGE_ROLES", "MANAGE_CHANNELS"],
     run: async (client, message, args, prefix) => {
         var objeto = {
             canal: "",
