@@ -19,7 +19,7 @@ client.aliases = new Discord.Collection();
 client.color = config.color;
 
 function requerirhandlers(){
-    ["command", "events", "distube", "reaccion_roles"].forEach(handler => {
+    ["command", "events", "distube", "reaccion_roles", "tickets"].forEach(handler => {
         try {
             require(`./handlers/${handler}`)(client, Discord)
         } catch(e){
