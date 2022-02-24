@@ -18,6 +18,7 @@
     "@distube/soundcloud": "^1.1.0",
     "@distube/spotify": "^1.2.1",
     "colors": "^1.4.0",
+    "discord-html-transcripts": "^1.2.4",
     "discord.js": "^13.6.0",
     "distube": "^3.3.1-1",
     "ffmpeg-static": "^4.4.1",
