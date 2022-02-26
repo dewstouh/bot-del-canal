@@ -1,14 +1,11 @@
-const mongoose = require('mongoose');
-
-const serverSchema = new mongoose.Schema({
-    guildID: String,
-    prefijo: String,
-    premium: {type: String, default: ""}
-})
-
-const model = mongoose.model("ConfigServer", serverSchema);
-
-module.exports = model;
+module.exports = {
+    name: "premium",
+    desc: "Sirve para comprobar si eres Premium",
+    premium: true,
+    run: async (client, message, args, prefix) => {
+        message.reply(`Si ves este mensaje, significa que eres un usuario premium! 🌟`)
+    }
+}
 
 /*
 ╔═════════════════════════════════════════════════════╗

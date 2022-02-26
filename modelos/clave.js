@@ -1,12 +1,12 @@
 const mongoose = require('mongoose');
 
-const serverSchema = new mongoose.Schema({
-    guildID: String,
-    prefijo: String,
-    premium: {type: String, default: ""}
+const keySchema = new mongoose.Schema({
+    clave: String,
+    duracion: String,
+    activado: {type: Boolean, default: false}
 })
 
-const model = mongoose.model("ConfigServer", serverSchema);
+const model = mongoose.model("Claves_Premium", keySchema);
 
 module.exports = model;
 

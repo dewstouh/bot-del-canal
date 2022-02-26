@@ -23,6 +23,7 @@
     "distube": "^3.3.1-1",
     "ffmpeg-static": "^4.4.1",
     "libsodium-wrappers": "^0.7.9",
-    "mongoose": "^6.2.0"
+    "mongoose": "^6.2.0",
+    "ms": "^2.1.3"
   }
 }
