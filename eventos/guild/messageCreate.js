@@ -1,11 +1,10 @@
 const config = require(`${process.cwd()}/config/config.json`)
 const serverSchema = require(`${process.cwd()}/modelos/servidor.js`)
-const { asegurar_todo } = require(`${process.cwd()}/handlers/funciones.js`)
+const { asegurar, asegurar_todo } = require(`${process.cwd()}/handlers/funciones.js`)
 module.exports = async (client, message) => {
     if (!message.guild || !message.channel || message.author.bot) return;
-    //aseguramos la base de datos en caso de que no haya una creada para el servidor
-    await asegurar_todo(message.guild.id);
-    let data = await serverSchema.findOne({guildID: message.guild.id});
+    await asegurar_todo(message.guild.id, message.author.id);
+    let data = await serverSchema.findOne({guildID: message.guild.id})
     if (!message.content.startsWith(data.prefijo)) return;
     const args = message.content.slice(data.prefijo.length).trim().split(" ");
     const cmd = args.shift()?.toLowerCase();
@@ -14,7 +13,6 @@ module.exports = async (client, message) => {
         if (command.owner) {
             if (!config.ownerIDS.includes(message.author.id)) return message.reply(`❌ **Solo los dueños de este bot pueden ejecutar este comando!**\n**Dueños del bot:** ${config.ownerIDS.map(ownerid => `<@${ownerid}>`)}`)
         }
-
         if(command.premium){
             if(data.premium){
                 if(data.premium <= Date.now()) return message.reply("❌ **Tu suscripción premium ha expirado!**")
