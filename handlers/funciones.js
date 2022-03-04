@@ -43,16 +43,17 @@ async function asegurar_todo(guildid, userid) {
 
 }
 
-
-//definimos la funcion de paginación
 async function paginacion(client, message, texto, titulo = "Paginación", elementos_por_pagina = 5) {
 
     /* DIVIDIMOS EL TEXTO PARA CREAR LAS PAGINAS Y EMPUJARLO EN LOS EMBEDS */
 
     var embeds = [];
     var dividido = elementos_por_pagina;
+    //creamos el bucle donde aumentaremos el valor de i + (cada elemento de array * elementos_por_pagina)
     for(let i = 0; i < texto.length; i+= dividido) {
+        //definimos desc, que será el array del texto especificado dividido por la variable "elementos_por_pagina"
         let desc = texto.slice(i, elementos_por_pagina);
+        //aumentamos el valor de elementos_por_pagina + dividido para mostrar los 5 siguientes
         elementos_por_pagina+= dividido;
         //creamos un embed por cada pagina de los datos divididos
         let embed = new Discord.MessageEmbed()
@@ -60,6 +61,7 @@ async function paginacion(client, message, texto, titulo = "Paginación", elemen
         .setDescription(desc.join(" "))
         .setColor(client.color)
         .setThumbnail(message.guild.iconURL({dynamic: true}))
+        //empujamos el embed creado en el array "embeds"
         embeds.push(embed)
     }
 
