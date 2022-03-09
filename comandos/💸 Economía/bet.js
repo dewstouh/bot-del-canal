@@ -1,4 +1,3 @@
-const { asegurar_todo } = require(`${process.cwd()}/handlers/funciones.js`);
 const ecoSchema = require(`${process.cwd()}/modelos/economia.js`);
 module.exports = {
     name: "bet",
