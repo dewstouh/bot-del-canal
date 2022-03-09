@@ -1,4 +1,3 @@
-const {asegurar_todo} = require(`${process.cwd()}/handlers/funciones.js`);
 const ecoSchema = require(`${process.cwd()}/modelos/economia.js`);
 const duration = require('humanize-duration');
 module.exports = {
@@ -6,8 +5,6 @@ module.exports = {
     aliases: ["diario"],
     desc: "Sirve para reclamar tu recompensa diaria",
     run: async (client, message, args, prefix) => {
-        //aseguramos la economia del usuario
-        await asegurar_todo(null, message.author.id);
         //leemos la economia el usuario
         let data = await ecoSchema.findOne({userID: message.author.id});
         //definimos cada cuanto tiempo se puede ejecutar el comando EN MS
