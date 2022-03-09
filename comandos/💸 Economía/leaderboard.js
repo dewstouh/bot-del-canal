@@ -1,6 +1,5 @@
-const {asegurar_todo, paginacion} = require(`${process.cwd()}/handlers/funciones.js`);
+const {paginacion} = require(`${process.cwd()}/handlers/funciones.js`);
 const ecoSchema = require(`${process.cwd()}/modelos/economia.js`);
-const Discord = require('discord.js');
 //definimos las medallas de los top 3 usuarios con más dinero
 var medallas = {
     1: "🥇",
@@ -13,7 +12,6 @@ module.exports = {
     aliases: ["lb", "top100", "top", "lb-economia", "ecolb", "top-eco"],
     desc: "Sirve para ver la latencia del Bot",
     run: async (client, message, args, prefix) => {
-        await asegurar_todo(null, message.author.id);
         const total = await ecoSchema.find();
         await message.guild.members.fetch();
         const ordenado = total.filter(member => message.guild.members.cache.get(member.userID)).sort((a, b) => Number((b.dinero+b.banco) - (a.dinero+a.banco)));
