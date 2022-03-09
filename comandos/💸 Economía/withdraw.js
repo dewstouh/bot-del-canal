@@ -1,12 +1,9 @@
-const {asegurar_todo} = require(`${process.cwd()}/handlers/funciones.js`);
 const ecoSchema = require(`${process.cwd()}/modelos/economia.js`);
 module.exports = {
     name: "withdraw",
     aliases: ["wd", "sacar"],
     desc: "Sirve para depositar dinero en el banco",
     run: async (client, message, args, prefix) => {
-        //aseguramos la economia del usuario
-        await asegurar_todo(null, message.author.id);
         //leemos la economia el usuario
         let data = await ecoSchema.findOne({userID: message.author.id});
         let cantidad = args[0];
