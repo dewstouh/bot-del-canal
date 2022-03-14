@@ -1,13 +1,13 @@
 const mongoose = require('mongoose');
 
-const setupSchema = new mongoose.Schema({
-    guildID: String,
-    reaccion_roles: Array,
-    sistema_tickets: {type: Object, default: {canal: "", mensaje: ""}},
-    sugerencias: {type: String, default: ""},
+const votos_sugerencias = new mongoose.Schema({
+    messageID: String,
+    si: {type: Array, default: []},
+    no: {type: Array, default: []},
+    autor: {type: String, default: ""}
 })
 
-const model = mongoose.model("Configuraciones", setupSchema);
+const model = mongoose.model("votos_sugerencias", votos_sugerencias);
 
 module.exports = model;
 
