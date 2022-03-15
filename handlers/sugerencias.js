@@ -60,7 +60,7 @@ module.exports = client => {
             switch (interaction.customId) {
                 case "votar_si": {
                     //si el votante ya ha votado en el mismo voto hacemos return;
-                    if (msg_data.si.includes(interaction.user.id)) return interaction.reply({ content: `Ya has votado SÍ en la sugerencia de <@${msg_data.autor}>` });
+                    if (msg_data.si.includes(interaction.user.id)) return interaction.reply({ content: `Ya has votado SÍ en la sugerencia de <@${msg_data.autor}>`, ephemeral: true});
                     //modificamos la DB
                     if (msg_data.no.includes(interaction.user.id)) msg_data.no.splice(msg_data.no.indexOf(interaction.user.id), 1)
                     msg_data.si.push(interaction.user.id);
@@ -82,7 +82,7 @@ module.exports = client => {
 
                 case "votar_no": {
                     //si el votante ya ha votado en el mismo voto hacemos return;
-                    if (msg_data.no.includes(interaction.user.id)) return interaction.reply({ content: `Ya has votado SÍ en la sugerencia de <@${msg_data.autor}>` });
+                    if (msg_data.no.includes(interaction.user.id)) return interaction.reply({ content: `Ya has votado SÍ en la sugerencia de <@${msg_data.autor}>` , ephemeral: true});
                     //modificamos la DB
                     if (msg_data.si.includes(interaction.user.id)) msg_data.si.splice(msg_data.si.indexOf(interaction.user.id), 1)
                     msg_data.no.push(interaction.user.id);
