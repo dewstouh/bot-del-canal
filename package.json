@@ -26,7 +26,6 @@
     "humanize-duration": "^3.27.1",
     "libsodium-wrappers": "^0.7.9",
     "mongoose": "^6.2.0",
-    "ms": "^2.1.3",
-    "quickmongo": "^5.1.2"
+    "ms": "^2.1.3"
   }
 }
