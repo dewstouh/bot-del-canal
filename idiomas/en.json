@@ -1,0 +1,15 @@
+{
+    "comandos": {
+        "ajustes": {
+            "prefix": {
+                "variable1": "❌ You have to specify the new prefix for the Bot!",
+                "variable2": "`✅ Changed the Prefix from \\`${prefix}\\` to \\`${args[0]}\\``"
+            },
+            "set-language": {
+                "variable1": "`❌ You have to specify the new language for the Bot!\n**Available Languages**: ${idiomas.map(idioma => `\\`${idioma}\\``).join(', ')}`",
+                "variable2": "`❌ You have to specify a valid language for the Bot!\n**Available Languages**: ${idiomas.map(idioma => `\\`${idioma}\\``).join(', ')}`",
+                "variable3": "`✅ Changed the language from \\`${idioma}\\` to \\`${args[0]}\\``"
+            }
+        }
+    }
+}

@@ -1,5 +1,6 @@
 const Discord = require('discord.js');
 const config = require('./config/config.json')
+const fs = require('fs');
 require('colors')
 const client = new Discord.Client({
     restTimeOffset: 0,
@@ -18,11 +19,20 @@ client.commands = new Discord.Collection();
 client.aliases = new Discord.Collection();
 client.color = config.color;
 
-function requerirhandlers(){
-    ["command", "events", "distube", "reaccion_roles", "tickets"].forEach(handler => {
+/* SISTEMA DE IDIOMAS */
+client.la = {};
+let idiomas = fs.readdirSync('./idiomas').filter(archivo => archivo.endsWith(".json")).map(idioma => idioma.replace(/.json/, ""));
+console.log(idiomas)
+for(const idioma of idiomas){
+    client.la[idioma] = require(`./idiomas/${idioma}`)
+}
+Object.freeze(client.la)
+
+function requerirhandlers() {
+    ["command", "events", "distube", "reaccion_roles", "tickets", "sugerencias", "sorteos", "bienvenida"].forEach(handler => {
         try {
             require(`./handlers/${handler}`)(client, Discord)
-        } catch(e){
+        } catch (e) {
             console.warn(e)
         }
     })
