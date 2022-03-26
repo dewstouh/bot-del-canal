@@ -50,6 +50,7 @@ module.exports = async client => {
         async deleteGiveaway(messageID) {
             //ovtenemos la db de los sorteos
             let db = await sorteosSchema.findOne({ ID: "sorteos" });
+            let sorteos = db.data;
             let sorteoIndex = -1;
             //buscamos el index del sorteo haciendo un mapeado de los sorteos y filtrando
             sorteos.map((sorteo, index) => {
