@@ -29,7 +29,7 @@ for(const idioma of idiomas){
 Object.freeze(client.la)
 
 function requerirhandlers() {
-    ["command", "events", "distube", "reaccion_roles", "tickets", "sugerencias", "sorteos", "bienvenida"].forEach(handler => {
+    ["command", "events", "distube", "reaccion_roles", "tickets", "sugerencias", "sorteos"].forEach(handler => {
         try {
             require(`./handlers/${handler}`)(client, Discord)
         } catch (e) {
