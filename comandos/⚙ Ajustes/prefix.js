@@ -8,13 +8,13 @@ module.exports = {
         await schema.findOneAndUpdate({guildID: message.guild.id}, {
             prefijo: args[0]
         })
-        return message.reply(eval(client.la[idioma]["comandos"]["ajustes"]["prefix"]["variable1"]))
+        return message.reply(eval(client.la[idioma]["comandos"]["ajustes"]["prefix"]["variable2"]))
     }
 }
 
 /*
 ╔═════════════════════════════════════════════════════╗
-║    || - || Desarollado por dewstouh#1088 || - ||    ║
+║    || - || Desarrollado por dewstouh#1088 || - ||   ║
 ║    ----------| discord.gg/MBPsvcphGf |----------    ║
 ╚═════════════════════════════════════════════════════╝
 */

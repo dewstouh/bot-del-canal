@@ -1,6 +1,6 @@
 const setupSchema = require(`${process.cwd()}/modelos/setups.js`);
 const votosSchema = require(`${process.cwd()}/modelos/votos-sugs.js`);
-const { asegurar_todo } = require(`${process.cwd()}/handlers/funciones.js`);
+const { asegurar_todo } = require(`${process.cwd()}/utils/funciones.js`);
 const Discord = require('discord.js');
 module.exports = client => {
     //evento al enviar mensaje en el canal de sugerencias
@@ -15,22 +15,24 @@ module.exports = client => {
             //eliminamos la sugerencia enviada por el autor y lo convertimos en sugerencia con botones
             message.delete().catch(() => { });
             //definimos los botones
-            let botones = new Discord.MessageActionRow().addComponents([
+            let botones = new Discord.ActionRowBuilder().addComponents([
                 //votar si
-                new Discord.MessageButton().setStyle("SECONDARY").setLabel("0").setEmoji("✅").setCustomId("votar_si"),
+                new Discord.ButtonBuilder().setStyle("Secondary").setLabel("0").setEmoji("✅").setCustomId("votar_si"),
                 //votar no
-                new Discord.MessageButton().setStyle("SECONDARY").setLabel("0").setEmoji("❌").setCustomId("votar_no"),
+                new Discord.ButtonBuilder().setStyle("Secondary").setLabel("0").setEmoji("❌").setCustomId("votar_no"),
                 //ver votanes
-                new Discord.MessageButton().setStyle("PRIMARY").setLabel("¿Quién ha votado?").setEmoji("❓").setCustomId("ver_votos"),
+                new Discord.ButtonBuilder().setStyle('Primary').setLabel("¿Quién ha votado?").setEmoji("❓").setCustomId("ver_votos"),
             ])
             //enviamos el mensaje con los botones
             let msg = await message.channel.send({
                 embeds: [
-                    new Discord.MessageEmbed()
+                    new Discord.EmbedBuilder()
                         .setAuthor({ name: "Sugerencia de " + message.author.tag, iconURL: message.author.displayAvatarURL({ dynamic: true }) })
                         .setDescription(`>>> ${message.content}`)
-                        .addField(`✅ Votos positivos`, "0 votos", true)
-                        .addField(`❌ Votos negativos`, "0 votos", true)
+                        .addFields([
+                            {name: `✅ Votos positivos`, value: "0 votos", inline: true},
+                            {name: `❌ Votos negativos`, value: "0 votos", inline: true}
+                        ])
                         .setColor(client.color)
                         .setFooter({ text: "Quieres sugerir algo? Simplemente envía la sugerencia aquí!", iconURL: "https://images.emojiterra.com/google/android-pie/512px/1f4a1.png" })
                 ],
@@ -105,10 +107,12 @@ module.exports = client => {
                     
                 case "ver_votos": {
                     interaction.reply({
-                        embeds: [new Discord.MessageEmbed()
+                        embeds: [new Discord.EmbedBuilder()
                         .setTitle(`Votos de la sugerencia`)
-                        .addField(`✅ Votos positivos`, msg_data.si.length >= 1 ? msg_data.si.map(u => `<@${u}>\n`).toString() : "No hay votos", true)
-                        .addField(`❌ Votos negativos`, msg_data.no.length >= 1 ? msg_data.no.map(u => `<@${u}>\n`).toString() : "No hay votos", true)
+                        .addFields([
+                            {name: `✅ Votos positivos`, value: msg_data.si.length >= 1 ? msg_data.si.map(u => `<@${u}>\n`).toString() : "No hay votos", inline: true},
+                            {name: `❌ Votos negativos`, value: msg_data.no.length >= 1 ? msg_data.no.map(u => `<@${u}>\n`).toString() : "No hay votos", inline: true}
+                        ])
                         .setColor(client.color)
                         ],
                         ephemeral: true,

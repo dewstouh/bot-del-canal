@@ -27,7 +27,7 @@ module.exports = {
             };
 
             let preguntar = await message.reply({
-                embeds: [new Discord.MessageEmbed()
+                embeds: [new Discord.EmbedBuilder()
                 .setTitle(`¿Qué emoji quieres usar para el \`${contador}º\` rol?`)
                 .setDescription(`*Reacciona en **__este mensaje__** con el emoji deseado!*\n\nEscribe \`finalizar\` para terminar el setup!`)
                 .setColor(client.color)
@@ -79,7 +79,7 @@ module.exports = {
 
             async function rol(){
                 let querol = await message.reply({
-                    embeds: [new Discord.MessageEmbed()
+                    embeds: [new Discord.EmbedBuilder()
                     .setTitle(`¿Qué rol quieres usar para el emoji seleccionado?`)
                     .setDescription(`*Simplemente menciona el rol o escribe su ID!*`)
                     .setColor(client.color)
@@ -92,7 +92,7 @@ module.exports = {
                     time: 180e3
                 }).then(async collected => {
                     var message = collected.first();
-                    const rol = message.guild.roles.cache.get(message.content) || message.mentions.roles.first();
+                    const rol = message.guild.roles.cache.get(message.content) || message.mentions.roles.filter(r => r.guild.id == message.guild.id).first();
                     if(rol) {
                         parametros.Rol = rol.id;
                         objeto.Parametros.push(parametros);
@@ -112,7 +112,7 @@ module.exports = {
         async function finalizar() {
             if(contador === 1 && !objeto.Parametros.length) return message.reply(`❌ **Tienes que añadir al menos un emoji con un rol**\nSetup cancelado!`);
             let msg = await message.reply({
-                embeds: [new Discord.MessageEmbed()
+                embeds: [new Discord.EmbedBuilder()
                 .setTitle(`Especificar Canal`)
                 .setDescription(`⬇ Menciona o escribe la ID del canal del mensaje a reaccionar! ⬇`)
                 .setColor(client.color)
@@ -125,12 +125,12 @@ module.exports = {
                 time: 180e3,
             }).then(async collected => {
                 var message = collected.first();
-                const canal = message.guild.channels.cache.get(message.content) || message.mentions.channels.first();
+                const canal = message.guild.channels.cache.get(message.content) || message.mentions.channels.filter(c => c.guild.id == message.guild.id).first()
                 if(canal) {
                     objeto.ID_CANAL = canal.id
 
                     var idmensaje = await message.reply({
-                        embeds: [new Discord.MessageEmbed()
+                        embeds: [new Discord.EmbedBuilder()
                             .setTitle(`Especificar Mensaje`)
                             .setDescription(`⬇ Escribe la ID del mensaje para añadir las reacciones! ⬇`)
                             .setColor(client.color)
@@ -156,13 +156,13 @@ module.exports = {
                         } else {
                             return message.reply(`❌ **No se ha encontrado el mensaje que has especificado!**\nSetup cancelado!`)
                         }
-                    }).catch(() => {
+                    }).catch((e) => {
                         return message.reply(`Tu tiempo ha expirado!`)
                     })
                 } else {
                     return message.reply(`❌ **No se ha encontrado el canal que has especificado!**\nSetup cancelado!`)
                 }
-            }).catch(() => {
+            }).catch((e) => {
                 return message.reply(`Tu tiempo ha expirado!`)
             })
         }
@@ -171,7 +171,7 @@ module.exports = {
 
 /*
 ╔═════════════════════════════════════════════════════╗
-║    || - || Desarollado por dewstouh#1088 || - ||    ║
+║    || - || Desarrollado por dewstouh#1088 || - ||   ║
 ║    ----------| discord.gg/MBPsvcphGf |----------    ║
 ╚═════════════════════════════════════════════════════╝
 */

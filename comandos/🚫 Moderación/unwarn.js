@@ -1,5 +1,5 @@
 const Discord = require('discord.js');
-const { asegurar_todo } = require(`${process.cwd()}/handlers/funciones.js`)
+const { asegurar_todo } = require(`${process.cwd()}/utils/funciones.js`)
 const warnSchema = require(`${process.cwd()}/modelos/warns.js`)
 module.exports = {
     name: "unwarn",
@@ -9,7 +9,7 @@ module.exports = {
     permisos_bot: ["ADMINISTRATOR", "BAN_MEMBERS"],
     run: async (client, message, args, prefix) => {
         //definimos la persona a avisar
-        let usuario = message.guild.members.cache.get(args[0]) || message.mentions.members.first();
+        let usuario = message.guild.members.cache.get(args[0]) || message.mentions.members.filter(m => m.guild.id == message.guild.id).first();
         if (!usuario) return message.reply(`❌ **No se ha encontrado al usuario que has especificado!**`);
         await asegurar_todo(message.guild.id, usuario.id);
         //definimos razón, y si no hay, la razón será "No se ha especificado ninguna razón!"
@@ -24,12 +24,12 @@ module.exports = {
             if (usuario.id == message.guild.ownerId) return message.reply(`❌ **No puedes avisar al DUEÑO del Servidor!**`);
 
             //comprobar que el BOT está por encima del usuario a avisar
-            if (message.guild.me.roles.highest.position > usuario.roles.highest.position) {
+            if (message.guild.members.me.roles.highest.position > usuario.roles.highest.position) {
                 //comprobar que la posición del rol del usuario que ejecuta el comando sea mayor a la persona que vaya a avisar
                 if (message.member.roles.highest.position > usuario.roles.highest.position) {
 
                     message.reply({
-                        embeds: [new Discord.MessageEmbed()
+                        embeds: [new Discord.EmbedBuilder()
                             .setTitle(`✅ Warn removido`)
                             .setDescription(`**Se ha removido el warn con ID \`${id_warn}\` de \`${usuario.user.tag}\` exitosamente!**`)
                             .setColor(client.color)
@@ -53,7 +53,7 @@ module.exports = {
 
 /*
 ╔═════════════════════════════════════════════════════╗
-║    || - || Desarollado por dewstouh#1088 || - ||    ║
+║    || - || Desarrollado por dewstouh#1088 || - ||   ║
 ║    ----------| discord.gg/MBPsvcphGf |----------    ║
 ╚═════════════════════════════════════════════════════╝
 */

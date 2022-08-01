@@ -1,5 +1,5 @@
 const setupSchema = require(`${process.cwd()}/modelos/setups.js`)
-const { asegurar_todo } = require(`${process.cwd()}/handlers/funciones.js`)
+const { asegurar_todo } = require(`${process.cwd()}/utils/funciones.js`)
 
 module.exports = client => {
     //AÑADIR ROLES AL AÑADIR LA REACCIÓN
@@ -35,7 +35,7 @@ module.exports = client => {
                                 //Si se ha encontrado el rol de la base de datos a dar en el servidor continuamos
                                 if (role) {
                                     //Si el rol a dar está por debajo de los roles del bot, le damos el rol
-                                    if (usuario.guild.me.roles.highest.rawPosition > role.position) {
+                                    if (usuario.guild.members.me.roles.highest.rawPosition > role.position) {
                                         await usuario.roles.add(rol).catch((e) => { e });
                                         //Si no, entonces hacemos return respondiendo que el bot no tiene permisos
                                     } else {
@@ -62,7 +62,7 @@ module.exports = client => {
                                 //Si se ha encontrado el rol de la base de datos a dar en el servidor continuamos
                                 if (role) {
                                     //Si el rol a dar está por debajo de los roles del bot, le damos el rol
-                                    if (usuario.guild.me.roles.highest.rawPosition > role.position) {
+                                    if (usuario.guild.members.me.roles.highest.position > role.position) {
                                         await usuario.roles.add(rol).catch((e) => { e });
                                         //Si no, entonces hacemos return respondiendo que el bot no tiene permisos
                                     } else {
@@ -124,7 +124,7 @@ module.exports = client => {
                                 //Si se ha encontrado el rol de la base de datos a dar en el servidor continuamos
                                 if (role) {
                                     //Si el rol a dar está por debajo de los roles del bot, le quitamos el rol
-                                    if (usuario.guild.me.roles.highest.rawPosition > role.position) {
+                                    if (usuario.guild.members.me.roles.highest.position > role.position) {
                                         //Si el usuario TIENE el rol, se lo quitamos
                                         if (usuario.roles.cache.has(rol)) await usuario.roles.remove(rol).catch(() => { });
                                     } else {
@@ -152,7 +152,7 @@ module.exports = client => {
                                 //Si se ha encontrado el rol de la base de datos a dar en el servidor continuamos
                                 if (role) {
                                     //Si el rol a dar está por debajo de los roles del bot, le quitamos el rol
-                                    if (usuario.guild.me.roles.highest.rawPosition > role.position) {
+                                    if (usuario.guild.members.me.roles.highest.rawPosition > role.position) {
                                         //Si el usuario TIENE el rol, se lo quitamos
                                         if (usuario.roles.cache.has(rol)) await usuario.roles.remove(rol).catch(() => { });
                                     } else {
@@ -186,7 +186,7 @@ module.exports = client => {
 
 /*
 ╔═════════════════════════════════════════════════════╗
-║    || - || Desarollado por dewstouh#1088 || - ||    ║
+║    || - || Desarrollado por dewstouh#1088 || - ||   ║
 ║    ----------| discord.gg/MBPsvcphGf |----------    ║
 ╚═════════════════════════════════════════════════════╝
 */

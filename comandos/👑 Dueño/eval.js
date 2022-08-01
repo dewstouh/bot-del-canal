@@ -12,7 +12,7 @@ module.exports = {
             const evaluado = await eval(args.join(" "));
             const truncado = truncar(inspect(evaluado), 2045);
             message.channel.send({
-                embeds: [new Discord.MessageEmbed()
+                embeds: [new Discord.EmbedBuilder()
                 .setTitle(`Evaluación`)
                 .setDescription(`\`\`\`js\n${truncado}\`\`\``)
                 .setColor(client.color)
@@ -21,7 +21,7 @@ module.exports = {
             })
         } catch (e){
             message.channel.send({
-                embeds: [new Discord.MessageEmbed()
+                embeds: [new Discord.EmbedBuilder()
                 .setTitle(`Evaluación`)
                 .setDescription(`\`\`\`js\n${e.toString().substring(0, 2048)}\`\`\``)
                 .setColor("FF0000")
@@ -42,7 +42,7 @@ function truncar(texto, n){
 
 /*
 ╔═════════════════════════════════════════════════════╗
-║    || - || Desarollado por dewstouh#1088 || - ||    ║
+║    || - || Desarrollado por dewstouh#1088 || - ||   ║
 ║    ----------| discord.gg/MBPsvcphGf |----------    ║
 ╚═════════════════════════════════════════════════════╝
 */

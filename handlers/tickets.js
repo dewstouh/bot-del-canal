@@ -1,4 +1,4 @@
-const { asegurar_todo } = require("./funciones");
+const { asegurar_todo } = require("../utils/funciones.js");
 const setupSchema = require(`${process.cwd()}/modelos/setups`);
 const ticketSchema = require(`${process.cwd()}/modelos/tickets`);
 const Discord = require('discord.js');
@@ -28,19 +28,20 @@ module.exports = client => {
 
             await interaction.reply({ content: "⌛ **Creando tu ticket... Porfavor espere**", ephemeral: true });
             //creamos el canal
-            const channel = await interaction.guild.channels.create(`ticket-${interaction.member.user.username}`.substring(0, 50), {
-                type: "GUILD_TEXT",
+            const channel = await interaction.guild.channels.create({
+                name: `ticket-${interaction.member.user.username}`.substring(0, 50),
+                type: 0, // 0 == texto, 2 == voz, ... https://discord-api-types.dev/api/discord-api-types-v10/enum/ChannelType
                 parent: interaction.channel.parent ?? null,
                 permissionOverwrites: [
                     //denegamos el permiso de ver el ticket a otra persona que no sea el creador del ticket
                     {
                         id: interaction.guild.id,
-                        deny: ["VIEW_CHANNEL"]
+                        deny: ["ViewChannel"]
                     },
                     //permitimos ver el ticket al usuario que ha creado el ticket
                     {
                         id: interaction.user.id,
-                        allow: ["VIEW_CHANNEL"]
+                        allow: ["ViewChannel"]
                     },
                     //ROL ESPECIAL PARA QUE PUEDA VER LOS TICKETS
                     /*
@@ -53,16 +54,16 @@ module.exports = client => {
             });
             //enviamos la bienvenida en el ticket del usuario
             channel.send({
-                embeds: [new Discord.MessageEmbed()
+                embeds: [new Discord.EmbedBuilder()
                     .setTitle(`Ticket de ${interaction.member.user.tag}`)
                     .setDescription(`Bienvenido al soporte ${interaction.member}\nExplica detallademente tu problema.`)
                     .setColor(client.color)
                 ],
-                components: [new Discord.MessageActionRow().addComponents(
+                components: [new Discord.ActionRowBuilder().addComponents(
                     [
-                        new Discord.MessageButton().setStyle("DANGER").setLabel("CERRAR").setEmoji("🔒").setCustomId("cerrar_ticket"),
-                        new Discord.MessageButton().setStyle("SECONDARY").setLabel("BORRAR").setEmoji("🗑").setCustomId("borrar_ticket"),
-                        new Discord.MessageButton().setStyle("PRIMARY").setLabel("GUARDAR").setEmoji("💾").setCustomId("guardar_ticket"),
+                        new Discord.ButtonBuilder().setStyle('Danger').setLabel("CERRAR").setEmoji("🔒").setCustomId("cerrar_ticket"),
+                        new Discord.ButtonBuilder().setStyle("Secondary").setLabel("BORRAR").setEmoji("🗑").setCustomId("borrar_ticket"),
+                        new Discord.ButtonBuilder().setStyle('Primary').setLabel("GUARDAR").setEmoji("💾").setCustomId("guardar_ticket"),
                     ]
                 )]
             });
@@ -98,12 +99,12 @@ module.exports = client => {
                     interaction.deferUpdate();
                     //creamos el mensaje de verificar
                     const verificar = await interaction.channel.send({
-                        embeds: [new Discord.MessageEmbed()
+                        embeds: [new Discord.EmbedBuilder()
                         .setTitle(`Verificate primero!`)
-                        .setColor("GREEN")
+                        .setColor('Green')
                         ],
-                        components: [new Discord.MessageActionRow().addComponents(
-                            new Discord.MessageButton().setLabel("Verificarse").setStyle("SUCCESS").setCustomId("verificar").setEmoji("✅")
+                        components: [new Discord.ActionRowBuilder().addComponents(
+                            new Discord.ButtonBuilder().setLabel("Verificarse").setStyle("Success").setCustomId("verificar").setEmoji("✅")
                         )]
                     });
 
@@ -125,7 +126,7 @@ module.exports = client => {
                         ticket_data.cerrado = true;
                         ticket_data.save();
                         //hacemos que el usuario que ha creado el ticket, no pueda ver el ticket
-                        interaction.channel.permissionOverwrites.edit(ticket_data.autor, { VIEW_CHANNEL: false });
+                        interaction.channel.permissionOverwrites.edit(ticket_data.autor, { ViewChannel: false });
                         interaction.channel.send(`✅ **Ticket Cerrado por \`${interaction.user.tag}\` el <t:${Math.round(Date.now() / 1000)}>**`)
                     });
 
@@ -134,15 +135,15 @@ module.exports = client => {
                         if(collected && collected.first() && collected.first().customId){
                             //editamos el mensaje desactivado el botón de verificarse
                             verificar.edit({
-                                components: [new Discord.MessageActionRow().addComponents(
-                                    new Discord.MessageButton().setLabel("Verificarse").setStyle("SUCCESS").setCustomId("verificar").setEmoji("✅").setDisabled(true)
+                                components: [new Discord.ActionRowBuilder().addComponents(
+                                    new Discord.ButtonBuilder().setLabel("Verificarse").setStyle("Success").setCustomId("verificar").setEmoji("✅").setDisabled(true)
                                 )]
                             })
                         } else {
                             verificar.edit({
-                                embeds: [verificar.embeds[0].setColor("RED")],
-                                components: [new Discord.MessageActionRow().addComponents(
-                                    new Discord.MessageButton().setLabel("NO VERIFICADO").setStyle("DANGER").setCustomId("verificar").setEmoji("❌").setDisabled(true)
+                                embeds: [verificar.embeds[0].setColor("Red")],
+                                components: [new Discord.ActionRowBuilder().addComponents(
+                                    new Discord.ButtonBuilder().setLabel("NO VERIFICADO").setStyle('Danger').setCustomId("verificar").setEmoji("❌").setDisabled(true)
                                 )]
                             })
                         }
@@ -155,12 +156,12 @@ module.exports = client => {
                     interaction.deferUpdate();
                     //creamos el mensaje de verificar
                     const verificar = await interaction.channel.send({
-                        embeds: [new Discord.MessageEmbed()
+                        embeds: [new Discord.EmbedBuilder()
                         .setTitle(`Verificate primero!`)
-                        .setColor("GREEN")
+                        .setColor('Green')
                         ],
-                        components: [new Discord.MessageActionRow().addComponents(
-                            new Discord.MessageButton().setLabel("Verificarse").setStyle("SUCCESS").setCustomId("verificar").setEmoji("✅")
+                        components: [new Discord.ActionRowBuilder().addComponents(
+                            new Discord.ButtonBuilder().setLabel("Verificarse").setStyle("Success").setCustomId("verificar").setEmoji("✅")
                         )]
                     });
 
@@ -192,15 +193,15 @@ module.exports = client => {
                         if(collected && collected.first() && collected.first().customId){
                             //editamos el mensaje desactivado el botón de verificarse
                             verificar.edit({
-                                components: [new Discord.MessageActionRow().addComponents(
-                                    new Discord.MessageButton().setLabel("Verificarse").setStyle("SUCCESS").setCustomId("verificar").setEmoji("✅").setDisabled(true)
+                                components: [new Discord.ActionRowBuilder().addComponents(
+                                    new Discord.ButtonBuilder().setLabel("Verificarse").setStyle("Success").setCustomId("verificar").setEmoji("✅").setDisabled(true)
                                 )]
                             })
                         } else {
                             verificar.edit({
-                                embeds: [verificar.embeds[0].setColor("RED")],
-                                components: [new Discord.MessageActionRow().addComponents(
-                                    new Discord.MessageButton().setLabel("NO VERIFICADO").setStyle("DANGER").setCustomId("verificar").setEmoji("❌").setDisabled(true)
+                                embeds: [verificar.embeds[0].setColor("Red")],
+                                components: [new Discord.ActionRowBuilder().addComponents(
+                                    new Discord.ButtonBuilder().setLabel("NO VERIFICADO").setStyle('Danger').setCustomId("verificar").setEmoji("❌").setDisabled(true)
                                 )]
                             })
                         }
@@ -214,7 +215,7 @@ module.exports = client => {
                     //enviamos el mensaje de guardando ticket
                     const mensaje = await interaction.channel.send({
                         content: interaction.user.toString(),
-                        embeds: [new Discord.MessageEmbed()
+                        embeds: [new Discord.EmbedBuilder()
                         .setTitle(`⌛ Guardando Ticket...`)
                         .setColor(client.color)
                         ]
@@ -228,9 +229,9 @@ module.exports = client => {
                     })
 
                     mensaje.edit({
-                        embeds: [new Discord.MessageEmbed()
+                        embeds: [new Discord.EmbedBuilder()
                             .setTitle(`✅ Ticket Gurdado`)
-                            .setColor("GREEN")
+                            .setC('Green')
                         ],
                         files: [adjunto]
                     })                    
@@ -249,7 +250,7 @@ module.exports = client => {
 
 /*
 ╔═════════════════════════════════════════════════════╗
-║    || - || Desarollado por dewstouh#1088 || - ||    ║
+║    || - || Desarrollado por dewstouh#1088 || - ||   ║
 ║    ----------| discord.gg/MBPsvcphGf |----------    ║
 ╚═════════════════════════════════════════════════════╝
 */

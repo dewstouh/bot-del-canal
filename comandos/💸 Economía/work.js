@@ -2,7 +2,7 @@ const ecoSchema = require(`${process.cwd()}/modelos/economia.js`);
 const duration = require('humanize-duration');
 var trabajos = [
     "Camionero",
-    "Desarollador",
+    "desarrollador",
     "Mecánico",
     "Taxista"
 ];
@@ -41,7 +41,7 @@ module.exports = {
 
 /*
 ╔═════════════════════════════════════════════════════╗
-║    || - || Desarollado por dewstouh#1088 || - ||    ║
+║    || - || Desarrollado por dewstouh#1088 || - ||   ║
 ║    ----------| discord.gg/MBPsvcphGf |----------    ║
 ╚═════════════════════════════════════════════════════╝
 */

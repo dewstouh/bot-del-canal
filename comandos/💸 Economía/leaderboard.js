@@ -1,4 +1,4 @@
-const {paginacion} = require(`${process.cwd()}/handlers/funciones.js`);
+const {paginacion} = require(`${process.cwd()}/utils/funciones.js`);
 const ecoSchema = require(`${process.cwd()}/modelos/economia.js`);
 //definimos las medallas de los top 3 usuarios con más dinero
 var medallas = {
@@ -22,7 +22,7 @@ module.exports = {
 
 /*
 ╔═════════════════════════════════════════════════════╗
-║    || - || Desarollado por dewstouh#1088 || - ||    ║
+║    || - || Desarrollado por dewstouh#1088 || - ||   ║
 ║    ----------| discord.gg/MBPsvcphGf |----------    ║
 ╚═════════════════════════════════════════════════════╝
 */

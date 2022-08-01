@@ -21,13 +21,12 @@ module.exports = (client, Discord) => {
             liveBuffer: 60000,
             dlChunkSize: 1024 * 1024 * 4,
         },
-        youtubeDL: false,
         plugins: [
             new SpotifyPlugin({
                 parallel: true,
                 emitEventsAfterFetching: true,
             }),
-            new SoundCloudPlugin()
+            new SoundCloudPlugin(),
         ],
     });
 
@@ -35,11 +34,11 @@ module.exports = (client, Discord) => {
 
     client.distube.on("playSong", (queue, song) => {
         queue.textChannel.send({
-            embeds: [new Discord.MessageEmbed()
+            embeds: [new Discord.EmbedBuilder()
             .setTitle(`Reproduciendo \`${song.name}\` - \`${song.formattedDuration}\``)
             .setThumbnail(song.thumbnail)
             .setURL(song.url)
-            .setColor("#8400ff")
+            .setColor(client.color)
             .setFooter({text: `Añadida por ${song.user.tag}`, iconURL: song.user.displayAvatarURL({dynamic: true})})
             ]
         })
@@ -47,11 +46,11 @@ module.exports = (client, Discord) => {
 
     client.distube.on("addSong", (queue, song) => {
         queue.textChannel.send({
-            embeds: [new Discord.MessageEmbed()
+            embeds: [new Discord.EmbedBuilder()
             .setTitle(`✅ Añadido \`${song.name}\` - \`${song.formattedDuration}\``)
             .setThumbnail(song.thumbnail)
             .setURL(song.url)
-            .setColor("#8400ff")
+            .setColor(client.color)
             .setFooter({text: `Añadida por ${song.user.tag}`, iconURL: song.user.displayAvatarURL({dynamic: true})})
             ]
         })
@@ -64,7 +63,7 @@ module.exports = (client, Discord) => {
 
 /*
 ╔═════════════════════════════════════════════════════╗
-║    || - || Desarollado por dewstouh#1088 || - ||    ║
+║    || - || Desarrollado por dewstouh#1088 || - ||   ║
 ║    ----------| discord.gg/MBPsvcphGf |----------    ║
 ╚═════════════════════════════════════════════════════╝
 */

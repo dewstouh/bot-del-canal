@@ -10,7 +10,7 @@ module.exports = {
         //definimos los metodos del sorteos
         let metodos = ["start", "reroll", "end"];
         if(!args || !metodos.includes(args[0])) return message.reply({
-            embeds: [new Discord.MessageEmbed()
+            embeds: [new Discord.EmbedBuilder()
             .setTitle(`❌ Tienes que especificar un método válido!`)
             .setColor("FF0000")
             .setDescription(`Métodos disponibles: ${metodos.map(metodo => `\`${metodo}\``).join(", ")}`)
@@ -19,11 +19,11 @@ module.exports = {
 
         switch (args[0]) {
             case "start":{
-                let embed = new Discord.MessageEmbed()
+                let embed = new Discord.EmbedBuilder()
                 .setDescription(`**Uso:** \`${prefix}sorteo <#canal> <duración> <ganadores> <premio>\``)
                 .setColor("FF0000");
 
-                let canal = message.guild.channels.cache.get(args[1]) || message.mentions.channels.first();
+                let canal = message.guild.channels.cache.get(args[1]) || message.mentions.channels.filter(c => c.guild.id == message.guild.id).first()
                 if(!canal) return message.reply({
                     embeds: [embed.setTitle(`❌ Tienes que especificar un canal válido!`)]
                 })
@@ -75,7 +75,7 @@ module.exports = {
 
 /*
 ╔═════════════════════════════════════════════════════╗
-║    || - || Desarollado por dewstouh#1088 || - ||    ║
+║    || - || Desarrollado por dewstouh#1088 || - ||   ║
 ║    ----------| discord.gg/MBPsvcphGf |----------    ║
 ╚═════════════════════════════════════════════════════╝
 */

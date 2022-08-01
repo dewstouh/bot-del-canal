@@ -14,7 +14,7 @@ module.exports = {
         };
 
         const quecanal = await message.reply({
-            embeds: [new Discord.MessageEmbed()
+            embeds: [new Discord.EmbedBuilder()
             .setTitle(`¿Qué canal quieres usar para el sistema de tickets?`)
             .setDescription(`*Simplemente menciona el canal o envia su ID!*`)
             .setColor(client.color)
@@ -28,11 +28,11 @@ module.exports = {
             time: 180e3
         }).then(async collected => {
             var message = collected.first();
-            const channel = message.guild.channels.cache.get(message.content) || message.mentions.channels.first();
+            const channel = message.guild.channels.cache.get(message.content) || message.mentions.channels.filter(c => c.guild.id == message.guild.id).first()
             if(channel) {
                 objeto.canal = channel.id;
                 const quemensaje = await message.reply({
-                    embeds: [new Discord.MessageEmbed()
+                    embeds: [new Discord.EmbedBuilder()
                     .setTitle(`¿Qué mensaje quieres usar para el sistema de tickets?`)
                     .setDescription(`*Simplemente envía el mensaje!*`)
                     .setColor(client.color)
@@ -46,25 +46,25 @@ module.exports = {
                 }).then(async collected => {
                     var message = collected.first();
                     const msg = await message.guild.channels.cache.get(objeto.canal).send({
-                        embeds: [new Discord.MessageEmbed()
+                        embeds: [new Discord.EmbedBuilder()
                             .setTitle(`📥 Crea un Ticket`)
                             .setDescription(`${message.content.substring(0, 2048)}`)
                             .setColor(client.color)
                         ],
-                        components: [new Discord.MessageActionRow().addComponents(new Discord.MessageButton().setLabel("Crea un ticket").setEmoji("📨").setCustomId("crear_ticket").setStyle("SUCCESS"))]
+                        components: [new Discord.ActionRowBuilder().addComponents(new Discord.ButtonBuilder().setLabel("Crea un ticket").setEmoji("📨").setCustomId("crear_ticket").setStyle("Success"))]
                     })
                     objeto.mensaje = msg.id
                     await setupSchema.findOneAndUpdate({guildID: message.guild.id}, {
                         sistema_tickets: objeto
                     });
                     return message.reply(`✅ **Configurado correctamente en <#${objeto.canal}>**`)
-                }).catch(() => {
+                }).catch((e) => {
                     return message.reply("❌ **El tiempo ha expirado!**")
                 })
             } else {
                 return message.reply("❌ **No se ha encontrado el canal que has especificado!**")
             }
-        }).catch(() => {
+        }).catch((e) => {
             return message.reply("❌ **El tiempo ha expirado!**")
         })
 
@@ -73,7 +73,7 @@ module.exports = {
 
 /*
 ╔═════════════════════════════════════════════════════╗
-║    || - || Desarollado por dewstouh#1088 || - ||    ║
+║    || - || Desarrollado por dewstouh#1088 || - ||   ║
 ║    ----------| discord.gg/MBPsvcphGf |----------    ║
 ╚═════════════════════════════════════════════════════╝
 */

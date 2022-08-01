@@ -12,12 +12,14 @@ module.exports = {
         if(tiempo) {
             let clave = generar_clave();
             message.author.send({
-                embeds: [new Discord.MessageEmbed()
+                embeds: [new Discord.EmbedBuilder()
                 .setTitle(`🔑 Nueva Clave!`)
                 .setDescription("```"+clave+"```")
-                .addField(`Generada por`, `\`${message.author.tag}\` \`${message.author.id}\``)
-                .addField(`Suscripción`, `\`${args[0]}\``)
-                .addField(`Estado`, `\`SIN USAR\``)
+                .addFields([
+                    {name: "Generada por", value: `\`${message.author.tag}\` \`${message.author.id}\``},
+                    {name: `Suscripción`, value: `\`${args[0]}\``},
+                    {name: `Estado`, value: `\`SIN USAR\``}
+                ])
                 .setColor(client.color)
                 ]
             }).catch(() => {
@@ -57,7 +59,7 @@ function generar_clave(){
 
 /*
 ╔═════════════════════════════════════════════════════╗
-║    || - || Desarollado por dewstouh#1088 || - ||    ║
+║    || - || Desarrollado por dewstouh#1088 || - ||   ║
 ║    ----------| discord.gg/MBPsvcphGf |----------    ║
 ╚═════════════════════════════════════════════════════╝
 */

@@ -6,7 +6,7 @@ module.exports = {
     desc: "Sirve para crear un sistema de niveles",
     permisos: ["ADMINISTRATOR"],
     run: async (client, message, args, prefix) => {
-        const canalNotificaciones = message.guild.channels.cache.get(args[0]) || message.mentions.channels.first();
+        const canalNotificaciones = message.guild.channels.cache.get(args[0]) || message.mentions.channels.filter(c => c.guild.id == message.guild.id).first()
         if(!canalNotificaciones) return message.reply("❌ **No has especificado un canal de notificaciones al subir de nivel!**");
 
         const mensaje = args.slice(1).join(" ").substring(0, 2048);
@@ -20,16 +20,16 @@ module.exports = {
         })
 
         return message.reply({embeds: [
-            new Discord.MessageEmbed().setTitle(`✅ Sistema de Niveles activado!`)
+            new Discord.EmbedBuilder().setTitle(`✅ Sistema de Niveles activado!`)
             .setDescription(`*Enviaré las notificaciones cuando un usuario suba de nivel en ${canalNotificaciones}*`)
-            .setColor("GREEN")
+            .setColor('Green')
         ]})
     }
 }
 
 /*
 ╔═════════════════════════════════════════════════════╗
-║    || - || Desarollado por dewstouh#1088 || - ||    ║
+║    || - || Desarrollado por dewstouh#1088 || - ||   ║
 ║    ----------| discord.gg/MBPsvcphGf |----------    ║
 ╚═════════════════════════════════════════════════════╝
 */

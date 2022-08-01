@@ -1,4 +1,4 @@
-const { asegurar_todo } = require(`${process.cwd()}/handlers/funciones.js`);
+const { asegurar_todo } = require(`${process.cwd()}/utils/funciones.js`);
 const ecoSchema = require(`${process.cwd()}/modelos/economia.js`);
 const duration = require('humanize-duration');
 module.exports = {
@@ -7,7 +7,7 @@ module.exports = {
     desc: "Sirve para robar monedas a un usuario",
     run: async (client, message, args, prefix) => {
         if (!args.length) return message.reply("❌ **Tienes que especificar al usuario para robar!**")
-        const usuario = message.guild.members.cache.get(args[0]) || message.mentions.members.first();
+        const usuario = message.guild.members.cache.get(args[0]) || message.mentions.members.filter(m => m.guild.id == message.guild.id).first();
         if (!usuario) return message.reply("❌ **No se ha encontrado al usuario que has especificado**")
         //aseguramos la economia del usuario a robar
         await asegurar_todo(null, usuario.id);
@@ -49,7 +49,7 @@ module.exports = {
 
 /*
 ╔═════════════════════════════════════════════════════╗
-║    || - || Desarollado por dewstouh#1088 || - ||    ║
+║    || - || Desarrollado por dewstouh#1088 || - ||   ║
 ║    ----------| discord.gg/MBPsvcphGf |----------    ║
 ╚═════════════════════════════════════════════════════╝
 */
