@@ -2,6 +2,7 @@
 
 <a href="https://discord.gg/MBPsvcphGf"><img src="https://discordapp.com/api/guilds/879397504075063297/widget.png?style=banner2"></a>
  
+¿No quieres o no puedes hostearlo?
 [**Invita la versión oficial del Bot**](https://discord.com/api/oauth2/authorize?client_id=939952555839078401&permissions=8&scope=bot%20applications.commands)
 
 
@@ -27,6 +28,12 @@ Gracias por usar este código! Porfavor, si tienes dudas, errores o preguntas so
    4. Instala los paquetes del Bot usando `npm i` en la consola.
    5. Inicia el Bot usando: `node index.js` o `npm start` en la consola.
      * Si tienes un servidor linux o tienes pm2 instalado, entonces usa: `pm2 start --name Nombre_Bot index.js`
+
+## 🎶 Sistema de Música
+
+   Si vas a hostear el bot en Linux, deberás de instalar ffmpeg con `sudo apt install ffmpeg`
+   
+   Si vas a hostear el bot en Windows, te recomiendo descargar ffmpeg de la [página oficial de descarga](https://ffmpeg.org/download.html) o puedes instalar ffmpeg-static con `npm i ffmpeg-static`
 
 ## 💛 APÓYANOS
 
