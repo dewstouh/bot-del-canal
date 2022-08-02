@@ -4,6 +4,7 @@ module.exports = {
     name: "claim",
     aliases: ["reclamar", "claim-key"], 
     desc: "Sirve para reclamar una Clave Premium",
+    permisos: ["Administrator"],
     run: async (client, message, args, prefix) => {
         const clave = await keySchema.findOne({clave: args[0]});
         if(clave) {

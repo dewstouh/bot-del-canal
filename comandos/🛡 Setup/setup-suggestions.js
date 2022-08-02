@@ -5,8 +5,8 @@ module.exports = {
     name: "setup-suggestion",
     aliases: ["suggestion-setup", "setup-sugerencias", "setup-sugerencia", "setupsugerencias"],
     desc: "Sirve para crear un sistema de Sugerencias",
-    permisos: ["ADMINISTRATOR"],
-    permisos_bot: ["MANAGE_ROLES", "MANAGE_CHANNELS"],
+    permisos: ["Administrator"],
+    permisos_bot: ["ManageRoles", "ManageChannels"],
     run: async (client, message, args, prefix) => {
         if(!args.length) return message.reply("❌ **Tienes que especificar el canal de sugerencias!**")
         const channel = message.guild.channels.cache.get(args[0]) || message.mentions.channels.filter(c => c.guild.id == message.guild.id).first()

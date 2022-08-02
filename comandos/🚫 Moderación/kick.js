@@ -3,8 +3,8 @@ module.exports = {
     name: "kick",
     aliases: ["kickear", "expulsar"],
     desc: "Sirve para expulsar a un usuario del Servidor",
-    permisos: ["ADMINISTRATOR", "KICK_MEMBERS"],
-    permisos_bot: ["ADMINISTRATOR", "KICK_MEMBERS"],
+    permisos: ["Administrator", "KickMembers"],
+    permisos_bot: ["Administrator", "KickMembers"],
     run: async (client, message, args, prefix) => {
         //definimos la persona a banear
         let usuario = message.guild.members.cache.get(args[0]) || message.mentions.members.filter(m => m.guild.id == message.guild.id).first();

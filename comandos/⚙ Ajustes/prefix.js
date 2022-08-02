@@ -3,6 +3,7 @@ module.exports = {
     name: "prefix",
     aliases: ["prefijo", "cambiarprefijo", "cambiarprefix"],
     desc: "Sirve para cambiar el Preijo del Bot en el Servidor",
+    permisos: ["Administrator"],
     run: async (client, message, args, prefix, idioma) => {
         if(!args[0]) return message.reply(client.la[idioma]["comandos"]["ajustes"]["prefix"]["variable1"])
         await schema.findOneAndUpdate({guildID: message.guild.id}, {

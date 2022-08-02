@@ -4,8 +4,8 @@ module.exports = {
     name: "giveaway",
     aliases: ["sorteo", "sorteos", "giveaways"],
     desc: "Sirve administrar/crear un sistema de sorteos",
-    permisos: ["ADMINISTRATOR", "BAN_MEMBERS"],
-    permisos_bot: ["ADMINISTRATOR", "BAN_MEMBERS"],
+    permisos: ["Administrator", "BanMembers"],
+    permisos_bot: ["Administrator", "BanMembers"],
     run: async (client, message, args, prefix) => {
         //definimos los metodos del sorteos
         let metodos = ["start", "reroll", "end"];

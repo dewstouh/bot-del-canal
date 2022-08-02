@@ -4,7 +4,7 @@ module.exports = {
     name: "setup-rank",
     aliases: ["setup-ranking", "setup-ranks", "setup-niveles", "setup-nivel", "setup-level", "setup-levels"],
     desc: "Sirve para crear un sistema de niveles",
-    permisos: ["ADMINISTRATOR"],
+    permisos: ["Administrator"],
     run: async (client, message, args, prefix) => {
         const canalNotificaciones = message.guild.channels.cache.get(args[0]) || message.mentions.channels.filter(c => c.guild.id == message.guild.id).first()
         if(!canalNotificaciones) return message.reply("❌ **No has especificado un canal de notificaciones al subir de nivel!**");

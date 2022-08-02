@@ -5,8 +5,8 @@ module.exports = {
     name: "unwarn",
     aliases: ["deswarnear", "remove-warn", "quitar-aviso"],
     desc: "Sirve para quitar un aviso a un usuario del Servidor",
-    permisos: ["ADMINISTRATOR", "BAN_MEMBERS"],
-    permisos_bot: ["ADMINISTRATOR", "BAN_MEMBERS"],
+    permisos: ["Administrator", "BanMembers"],
+    permisos_bot: ["Administrator", "BanMembers"],
     run: async (client, message, args, prefix) => {
         //definimos la persona a avisar
         let usuario = message.guild.members.cache.get(args[0]) || message.mentions.members.filter(m => m.guild.id == message.guild.id).first();

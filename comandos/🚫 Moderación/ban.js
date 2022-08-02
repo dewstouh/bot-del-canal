@@ -3,8 +3,8 @@ module.exports = {
     name: "ban",
     aliases: ["banear", "banuser"],
     desc: "Sirve para banear a un usuario del Servidor",
-    permisos: ["ADMINISTRATOR", "BAN_MEMBERS"],
-    permisos_bot: ["ADMINISTRATOR", "BAN_MEMBERS"],
+    permisos: ["Administrator", "BanMembers"],
+    permisos_bot: ["Administrator", "BanMembers"],
     run: async (client, message, args, prefix) => {
         //definimos la persona a banear
         let usuario = message.guild.members.cache.get(args[0]) || message.mentions.members.filter(m => m.guild.id == message.guild.id).first();
