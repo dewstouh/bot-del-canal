@@ -231,7 +231,7 @@ module.exports = client => {
                     mensaje.edit({
                         embeds: [new Discord.EmbedBuilder()
                             .setTitle(`✅ Ticket Gurdado`)
-                            .setC('Green')
+                            .setColor('Green')
                         ],
                         files: [adjunto]
                     })                    
