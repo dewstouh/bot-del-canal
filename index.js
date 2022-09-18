@@ -13,7 +13,7 @@ const client = new Discord.Client({
         Discord.GatewayIntentBits.GuildEmojisAndStickers,
     ],
     partials: [Discord.Partials.User, Discord.Partials.Channel, Discord.Partials.GuildMember, Discord.Partials.Message, Discord.Partials.Reaction]
-
+    allowedMentions: [repliedUser: false]
 })
 
 client.commands = new Discord.Collection();
