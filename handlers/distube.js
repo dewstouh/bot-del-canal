@@ -12,8 +12,8 @@ module.exports = (client, Discord) => {
         savePreviousSongs: true,
         emitAddSongWhenCreatingQueue: false,
         searchSongs: 0,
-        nsfw: false,
-        emptyCooldown: 25,
+        nsfw: true,
+        emptyCooldown: 60*5,
         ytdlOptions: {
             highWaterMark: 1024 * 1024 * 64,
             quality: "highestaudio",
@@ -33,15 +33,17 @@ module.exports = (client, Discord) => {
     //escuchamos los eventos de DisTube
 
     client.distube.on("playSong", (queue, song) => {
-        queue.textChannel.send({
-            embeds: [new Discord.EmbedBuilder()
-            .setTitle(`Reproduciendo \`${song.name}\` - \`${song.formattedDuration}\``)
-            .setThumbnail(song.thumbnail)
-            .setURL(song.url)
-            .setColor(client.color)
-            .setFooter({text: `Añadida por ${song.user.tag}`, iconURL: song.user.displayAvatarURL({dynamic: true})})
-            ]
-        })
+        // if(queue.songs.lenght > 0 ){
+            queue.textChannel.send({
+                embeds: [new Discord.EmbedBuilder()
+                .setTitle(`Reproduciendo \`${song.name}\` - \`${song.formattedDuration}\``)
+                .setThumbnail(song.thumbnail)
+                .setURL(song.url)
+                .setColor(client.color)
+                .setFooter({text: `Añadida por ${song.user.tag}`, iconURL: song.user.displayAvatarURL({dynamic: true})})
+                ]
+            })
+        // }
     })
 
     client.distube.on("addSong", (queue, song) => {
@@ -57,7 +59,7 @@ module.exports = (client, Discord) => {
     });
 
     client.distube.on("initQueue", (queue) => {
-        queue.autoplay = true;
+        // queue.autoplay = true;
     });
 };
 

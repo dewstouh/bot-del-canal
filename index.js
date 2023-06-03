@@ -46,3 +46,6 @@ client.login(config.token).catch(() => console.log(`-[X]- NO HAS ESPECIFICADO UN
 ║    ----------| discord.gg/MBPsvcphGf |----------    ║
 ╚═════════════════════════════════════════════════════╝
 */
+
+
+// MongoDB pass: PhQkMvwaLzmHTmlr

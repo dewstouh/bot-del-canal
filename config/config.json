@@ -1,7 +1,7 @@
 {
-    "token": "",
+    "token": "MTEwOTUwOTc2MDAzNTg2ODcyMw.Gwkh9-.p_8rZrAyUg0jVzqqaZLkdDfCUbkVlEYEp7ggsk",
     "prefix": ">>",
-    "mongodb": "",
+    "mongodb": "mongodb+srv://serviotquezada:PhQkMvwaLzmHTmlr@lukyja.jqxrhrs.mongodb.net/?retryWrites=true&w=majority",
     "ownerIDS": ["282942681980862474"],
     "color": "#ff0000"
 }
